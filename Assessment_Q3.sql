@@ -1,6 +1,8 @@
 -- Question 3: Find active savings or investment accounts with no transactions in the last 365 days
 
 -- Savings accounts with no transactions in the last 365 days
+
+-- Create a CTE named savings_last_txn
 WITH savings_last_txn AS (
     SELECT 
         s.id AS plan_id,
@@ -21,7 +23,7 @@ WITH savings_last_txn AS (
         DATEDIFF(CURDATE(), MAX(s.created_on)) > 365
 ),
 
--- Investment plans with no transactions in the last 365 days
+-- Create a CTE named investment_last_txn
 investment_last_txn AS (
     SELECT 
         p.id AS plan_id,
