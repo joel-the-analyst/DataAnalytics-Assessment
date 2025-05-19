@@ -1,5 +1,8 @@
 -- Q4: Customer Lifetime Value (CLV) Estimation
 
+-- Task: Estimate CLV based on account tenure and transaction volume
+
+-- Create a CTE named customer_base
 WITH customer_base AS (
     SELECT
         u.id AS customer_id,
@@ -10,6 +13,7 @@ WITH customer_base AS (
         users_customuser u
 ),
 
+-- Create a CTE named customer_base
 customer_savings AS (
     SELECT
         s.owner_id AS customer_id,
@@ -23,6 +27,7 @@ customer_savings AS (
         s.owner_id
 ),
 
+-- Create a CTE named customer_metrics
 customer_metrics AS (
     SELECT
         cb.customer_id,
@@ -43,6 +48,7 @@ customer_metrics AS (
         customer_savings cs ON cb.customer_id = cs.customer_id
 )
 
+-- Combined queries
 SELECT
     *
 FROM
