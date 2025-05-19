@@ -44,14 +44,16 @@ Categorize customers into **High**, **Medium**, and **Low** frequency groups bas
 **Approach:**
 
 **Step 1:** Filter Inflow Transactions Only
-I used confirmed_amount > 0 to focus on active inflow transactions, ensuring I ignore non-deposit entries.
+
+I used `confirmed_amount` > 0 to focus on active inflow transactions, ensuring I ignore non-deposit entries.
 
 **Step 2:** Calculate Transaction Span
 I measured the transaction duration per customer:
   a. This captures the number of active months from the customer’s first to last transaction.
-  b. I add +1 to include both the start and end months.
+  b. I added +1 to include both the start and end months.
 
 **Step 3:** Compute Average Monthly Transactions for each user:
+
 This provides a normalized view of transaction frequency, independent of how long a customer has been active
 
 **Step 4:** Customers were segmented based on their average monthly transaction count:
