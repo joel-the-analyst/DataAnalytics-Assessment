@@ -1,3 +1,8 @@
+-- Question: Transaction Frequency Analysis
+
+-- Calculate the average number of transactions per customer per month.
+
+-- Create a CTE for transactions
 WITH transaction_stats AS (
     SELECT 
         s.owner_id,
@@ -10,6 +15,8 @@ WITH transaction_stats AS (
     GROUP BY 
         s.owner_id
 ),
+
+-- Create a CTE for categorized users
 categorized_users AS (
     SELECT 
         t.owner_id,
@@ -22,6 +29,8 @@ categorized_users AS (
     FROM 
         transaction_stats t
 )
+
+-- Final Query
 SELECT 
     frequency_category,
     COUNT(owner_id) AS customer_count,
