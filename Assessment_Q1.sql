@@ -4,7 +4,7 @@ Write a query to find customers with at least one funded savings plan AND
 one funded investment plan, sorted by total deposits. 
 **/
 
-
+-- Create a CTE named plan_counts
 WITH plan_counts AS (
     SELECT 
         owner_id,
@@ -13,6 +13,8 @@ WITH plan_counts AS (
     FROM plans_plan
     GROUP BY owner_id
 ),
+
+-- Create a CTE named total_deposits
 total_deposits AS (
     SELECT 
         owner_id,
@@ -22,6 +24,7 @@ total_deposits AS (
     GROUP BY owner_id
 )
 
+-- Combined Queries
 SELECT 
     u.id AS owner_id,
     CONCAT(u.first_name, ' ', u.last_name) AS name,
